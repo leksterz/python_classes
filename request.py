@@ -13,8 +13,21 @@ class Requests:
         self.date = date
         self.time_slots = time_slots
 
+    @classmethod
+    def get_all_reqs(cls, date, schedule):
+        for req in schedule[date]['pending']:
+            print(req)
+
     def submit_req(self, schedule):
         schedule[self.date]['pending'].append(self)
 
-    def get_req(self):
-        print(self)
+    def accept_req(self, schedule):
+        pass
+
+    def __repr_(self):
+        return self.user_info, self.date, self.time_slots
+
+
+req2 = Requests(['alex', 'lek6ci@gmail.com'], '01-01-2022', ['12PM', '1PM'])
+
+print(req2.__repr__())

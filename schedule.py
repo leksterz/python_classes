@@ -11,12 +11,15 @@ schedule = {
             ['4:00PM', ['alex', 'lekci@gmail.com']]
         ],
         'pending': [
-            req2
+            req2, req2
         ]
     }
 }
 
-req1.submit_req(schedule)
+r.Requests.get_all_reqs('01-01-2022', schedule)
 
-print(schedule['01-01-2022']['pending'][0].user_info)
-print()
+
+# req1.submit_req(schedule)
+
+# print(schedule['01-01-2022']['pending'][0].user_info)
+# print(str(req1))
