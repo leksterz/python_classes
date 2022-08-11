@@ -7,8 +7,8 @@ schedule = {
     '01-01-2022': {
         'available': ['12:00PM', '1:00PM', '2:00PM'],
         'accepted': [
-            ['3:00PM', ['alex', 'lek6ci@gmail.com']],
-            ['4:00PM', ['alex', 'lek6ci@gmail.com']]
+            ['3:00PM', ['alex', 'lekci@gmail.com']],
+            ['4:00PM', ['alex', 'lekci@gmail.com']]
         ],
         'pending': [
             req2
