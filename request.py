@@ -24,13 +24,15 @@ class Requests:
     def accept_req(self, schedule):
         # take the req time slots
         # bring to accepted + user info
-
         for date in schedule.keys():
             if (date == self.date):
-                # for time_slot in schedule[self.date]['available']:
                 for time_slot in self.time_slots:
-                    schedule[self.date]['accepted'].append(
-                        [time_slot, self.user_info])
+                    for availability in schedule[self.date]['available']:
+                        if (time_slot == availability):
+                            schedule[self.date]['accepted'].append(
+                                [time_slot, self.user_info])
+                            schedule[self.date]['available'].remove(
+                                availability)
 
     def __repr_(self):
         return self.user_info, self.date, self.time_slots
