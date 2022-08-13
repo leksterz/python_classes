@@ -19,7 +19,8 @@ class Requests:
             print(req)
 
     def submit_req(self, schedule):
-        schedule[self.date]['pending'].append(self)
+        schedule[self.date]['pending'].append(
+            [self.user_info, self.time_slots])
 
     def accept_req(self, schedule):
         # flag keeps track of whether a req was accepted
@@ -39,20 +40,15 @@ class Requests:
                             req_accepted = True
         if (req_accepted == True):
             # remove pending reqs with similar slots from schedule
+            # all this to be re factored to seperate fn
             for date in schedule.keys():
                 if (date == self.date):
                     for time_slot in self.time_slots:
                         for pending_req in schedule[self.date]['pending']:
-                            print(pending_req)
-                            # pending_req error - object is not
-                            #callable or subscriptable
-                            for pending_req_t_slot in pending_req(2):
-                                print(pending_req_t_slot)
+                            for pending_req_t_slot in pending_req[1]:
                                 if (time_slot == pending_req_t_slot):
                                     schedule[self.date]['pending'].remove(
                                         pending_req)
-
-            pass
 
             # notify user if their spot is canceled
 
