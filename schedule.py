@@ -26,6 +26,6 @@ schedule = {
     }
 }
 
-print(schedule['01-02-2022'])
-req2.accept_req(schedule)
-print(schedule['01-02-2022'])
+# print(schedule['01-01-2022'])
+req1.accept_req(schedule)
+# print(schedule['01-01-2022'])
