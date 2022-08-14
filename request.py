@@ -40,15 +40,21 @@ class Requests:
                             req_accepted = True
         if (req_accepted == True):
             # remove pending reqs with similar slots from schedule
-            # all this to be re factored to seperate fn
+            # all this to be re factored to seperate fn + add
+            # notify method
             for date in schedule.keys():
                 if (date == self.date):
                     for time_slot in self.time_slots:
                         for pending_req in schedule[self.date]['pending']:
                             for pending_req_t_slot in pending_req[1]:
+                                print(
+                                    f'\nchecking {pending_req[0]}')
                                 if (time_slot == pending_req_t_slot):
                                     schedule[self.date]['pending'].remove(
                                         pending_req)
+                                    print(
+                                        f'removing {pending_req[0]}')
+                                    break
 
             # notify user if their spot is canceled
 
