@@ -39,22 +39,24 @@ class Requests:
                                 availability)
                             req_accepted = True
         if (req_accepted == True):
-            # remove pending reqs with similar slots from schedule
-            # all this to be re factored to seperate fn + add
-            # notify method
+            # we want to compare the accepted_req time slots
+            # with each of the time_slots for a request
             for date in schedule.keys():
                 if (date == self.date):
+                    # check the
                     for time_slot in self.time_slots:
-                        for pending_req in schedule[self.date]['pending']:
-                            for pending_req_t_slot in pending_req[1]:
+                        for pending_req in schedule[self.date]['pending'][:]:
+                            for pending_req_t_slot in pending_req[1][:]:
                                 print(
-                                    f'\nchecking {pending_req[0]}')
+                                    f'\nchecking {pending_req_t_slot} from {pending_req[0]} vs {time_slot}')
                                 if (time_slot == pending_req_t_slot):
                                     schedule[self.date]['pending'].remove(
                                         pending_req)
                                     print(
                                         f'removing {pending_req[0]}')
                                     break
+                                else:
+                                    print('no match, keep')
 
             # notify user if their spot is canceled
 
