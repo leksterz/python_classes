@@ -51,25 +51,3 @@ print(f'\n THE SCHEDULE AFTER SUBMIT \n{schedule["01-01-2022"]["pending"]}')
 req1.accept_req(schedule)
 
 print(f'\n THE SCHEDULE AFTER ACCEPT \n{schedule["01-01-2022"]["pending"]}')
-
-# def test_remove_pending_reqs():
-#     for time_slot in req1.time_slots:
-#         print(schedule[req1.date]['pending'])
-#         for pending_req in schedule[req1.date]['pending'][:]:
-#             print(f'\n{pending_req[0][0]}')
-#             for pending_req_t_slot in pending_req[1][:]:
-#                 print(
-#                     f'checking {pending_req_t_slot} from {pending_req[0]} vs {time_slot}')
-#                 if (time_slot == pending_req_t_slot):
-#                     schedule[req1.date]['pending'].remove(
-#                         pending_req)
-#                     print(
-#                         f'removing {pending_req[0]}')
-#                     break
-#                 else:
-#                     print('no match, keep')
-
-#     print(schedule[req1.date]['pending'])
-
-
-# test_remove_pending_reqs()
