@@ -1,3 +1,6 @@
+import os
+
+
 class Requests:
     """The request class manages the submition of requests via
     the initializition. It keeps track of pending requests, status = open.
@@ -66,4 +69,8 @@ class Requests:
         return self.user_info, self.date, self.time_slots
 
 
-req2 = Requests(['alex', 'lek6ci@gmail.com'], '01-01-2022', ['12PM', '1PM'])
+try:
+    env_var = os.environ['TEST']
+    print('ENV environment variable exists')
+except KeyError:
+    print('ENV environment variable does not exist')
