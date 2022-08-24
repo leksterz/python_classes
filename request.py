@@ -42,35 +42,35 @@ class Requests:
 
     def clear_pending(self, schedule):
         # send email to users who's request was denied
-        with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-            smtp.ehlo()
-            smtp.starttls()
-            smtp.ehlo()
+        # with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+        #     smtp.ehlo()
+        #     smtp.starttls()
+        #     smtp.ehlo()
 
-            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        #     smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
 
-            subject = "[DECLINED] Your Explode Studio Session was Declined"
-            accepted_time_slots = self.time_slots
-            body = (
-                f'Hey there! Your request for {self.date} was not accepted.\nThis can happen for a number of reasons, so no sweat. Try to find another time.\nHere are the time slots you requested: {accepted_time_slots}. Check back to see if we have other availability')
-            for date in schedule.keys():
-                if (date == self.date):
-                    # check the
-                    for time_slot in self.time_slots:
-                        for pending_req in schedule[self.date]['pending'][:]:
-                            for pending_req_t_slot in pending_req[1][:]:
-                                # DEBUG
-                                # print(
-                                #     f'\nchecking {pending_req_t_slot} from {pending_req[0]} vs {time_slot}')
-                                if (time_slot == pending_req_t_slot):
-                                    schedule[self.date]['pending'].remove(
-                                        pending_req)
-                                    # smtp.sendmail(SENDER, RECEIVER- this is user, msg)
-                                    # smtp.sendmail(
-                                    #     EMAIL_ADDRESS, EMAIL_ADDRESS, message)
-                                    break
-                                else:
-                                    print('no match, keep')
+        #     subject = "[DECLINED] Your Explode Studio Session was Declined"
+        #     accepted_time_slots = self.time_slots
+        #     body = (
+        #         f'Hey there! Your request for {self.date} was not accepted.\nThis can happen for a number of reasons, so no sweat. Try to find another time.\nHere are the time slots you requested: {accepted_time_slots}. Check back to see if we have other availability')
+        for date in schedule.keys():
+            if (date == self.date):
+                # check the
+                for time_slot in self.time_slots:
+                    for pending_req in schedule[self.date]['pending'][:]:
+                        for pending_req_t_slot in pending_req[1][:]:
+                            # DEBUG
+                            # print(
+                            #     f'\nchecking {pending_req_t_slot} from {pending_req[0]} vs {time_slot}')
+                            if (time_slot == pending_req_t_slot):
+                                schedule[self.date]['pending'].remove(
+                                    pending_req)
+                                # smtp.sendmail(SENDER, RECEIVER- this is user, msg)
+                                # smtp.sendmail(
+                                #     EMAIL_ADDRESS, EMAIL_ADDRESS, message)
+                                break
+                            else:
+                                print('no match, keep')
 
     def accept_req(self, schedule):
         # send accepted email to user
